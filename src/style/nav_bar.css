@@ -1,0 +1,39 @@
+#nav_bar{
+   border: solid;
+   display: flex;
+   flex-direction: row;
+   height: 100px;
+   position: fixed;
+   width: 100%;
+   top: 0;
+   background-color: white;
+}
+#nav_bar_titre{
+    padding: 30px;
+    width: 50%;
+    font-family: 'Itim';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 38px;
+/* or 119% */
+
+text-align: center;
+letter-spacing: 1em;
+}
+#nav_bar_li{
+    list-style: none;
+}
+#nav_bar_li>li{
+    width: 150px;
+    margin-top: 30px;
+    float: left;
+    border: solid ;
+    text-align: center;
+    font-family: 'Itim';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 38px;
+
+}

@@ -1,0 +1,48 @@
+#Home{
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+}
+#text_home{
+ 
+    width: 60%;
+    height: 700px;
+}
+#text_home>h1{
+    margin-top: 20px;
+    font-family: 'Itim';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 30px;
+
+text-align: center;
+letter-spacing: 0.4em;
+}
+#text_home>p{
+    margin-top: 30px;
+    font-family: 'Istok Web';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 30px;
+/* or 125% */
+
+text-align: center;
+letter-spacing: 0.2em;
+}
+.button_home{
+    font-family: 'Itim';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 30px;
+/* or 107% */
+
+text-align: center;
+letter-spacing: 0.2em;
+margin-left: 20px;
+margin-top: 50px;
+color: white;
+background-color: black;
+}
