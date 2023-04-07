@@ -1,12 +1,17 @@
+import axios from "axios";
 import "./style/login.css"
-
+import { Email_s, Token_s } from "./Store/login_slice";
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const dispatch=useDispatch()
+  const Nav=useNavigate()
 
   function validateEmail() {
     // This regular expression checks if the email is in a valid format
@@ -33,8 +38,23 @@ function Login() {
     // Check if there are any errors before submitting the form
     if (!emailError && !passwordError) {
          const data={
-          
+            email:email,
+            password:password
          }
+         axios.post("http://127.0.0.1:8000/api/login", data).then((Response)=>{
+          console.log(Response.data)
+          if(Response.data.message=="connected"){
+             dispatch(Token_s(Response.data.token))
+             Nav("/post")
+          }else if(Response.data.message=="vrefie votre email"){
+              dispatch(Email_s(email))
+              Nav("/validation")
+          }else if(Response.data.message=="password incorrect"){
+            setPasswordError(Response.data.message)
+          }else if(Response.data.message=="email incorrect") {
+             setEmailError("email incorrect")
+          }
+         })
     }
   }
 

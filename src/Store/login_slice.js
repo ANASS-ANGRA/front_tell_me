@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
-    tokens:'',
+    tokens:null,
     nom:'',
-    email:'',
-    pass:''
+    email:null,
 }
 
 
@@ -13,15 +12,15 @@ export const Info_slice=createSlice({
    name:"tokens",
    initialState,
    reducers:{
-     token:(state,action)=>{
+     Token_s:(state,action)=>{
          state.tokens=action.payload
      },
      Email_s:(state,action)=>{
-      state.email=action.data
+      state.email=action.payload
      }
    }
 })
 
 export default Info_slice.reducer
 
-export const {token ,Email_s}= Info_slice.actions
+export const {Token_s ,Email_s}= Info_slice.actions
