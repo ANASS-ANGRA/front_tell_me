@@ -12,7 +12,7 @@ function Nav_bar(){
                 <ul id="nav_bar_li">
                     <li><Link to="/">accueil</Link>  </li>
                     <li><Link to="/post">post</Link></li>
-                    <li>profil</li>
+                    <li><Link to="/profile">profil</Link></li>
                 </ul>
 
             </div>
