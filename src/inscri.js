@@ -1,5 +1,9 @@
+import axios from "axios";
 import"./style/inscri.css"
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Email_s } from "./Store/login_slice";
 
 function Inscri() {
   const [name, setName] = useState('');
@@ -10,8 +14,10 @@ function Inscri() {
   const [usernameError, setUsernameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-
+    const dispatch=useDispatch()
+     const Nav=useNavigate()
   function validateName() {
+     
     if (!name.trim()) {
       setNameError('Please enter your name');
     } else {
@@ -38,8 +44,8 @@ function Inscri() {
   }
 
   function validatePassword() {
-    if (password.length < 6) {
-      setPasswordError('Password must be at least 6 characters long');
+    if (password.length < 8) {
+      setPasswordError('Password must be at least 8 characters long');
     } else {
       setPasswordError('');
     }
@@ -53,7 +59,24 @@ function Inscri() {
     validatePassword();
     // Check if there are any errors before submitting the form
     if (!nameError && !usernameError && !emailError && !passwordError) {
-        //axios
+        const data ={
+          fake_name:name,
+          name:username,
+          email:email,
+          password:password
+        }
+        axios.post("http://127.0.0.1:8000/api/register", data).then((Response)=>{
+          console.log(Response)
+           if(Response.data.message=="create compte"){
+            
+             dispatch(Email_s(email))
+             Nav("/validation")
+           }
+           else{
+                alert(Response.data)
+           }
+        }
+        )
     }
   }
 

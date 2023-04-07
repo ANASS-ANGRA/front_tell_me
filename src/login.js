@@ -19,8 +19,8 @@ function Login() {
   }
 
   function validatePassword() {
-    if (password.length < 6) {
-      setPasswordError('Password must be at least 6 characters long');
+    if (password.length < 8) {
+      setPasswordError('Password must be at least 8 characters long');
     } else {
       setPasswordError('');
     }
@@ -32,7 +32,9 @@ function Login() {
     validatePassword();
     // Check if there are any errors before submitting the form
     if (!emailError && !passwordError) {
-      // Submit the form
+         const data={
+          
+         }
     }
   }
 

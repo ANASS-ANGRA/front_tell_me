@@ -12,6 +12,8 @@ function Post(){
     useEffect(()=>{
       dispatch(fetch_posts())  
     },[])
+
+
     if(loading){
         return(
             <div id="page_post">
@@ -20,6 +22,7 @@ function Post(){
             
         )
     }
+
 
     return(
         <div id="page_post">
