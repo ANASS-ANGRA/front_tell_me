@@ -1,10 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk , createSlice } from '@reduxjs/toolkit'
+import axios from 'axios';
 
 const initialState={
     tokens:null,
     nom:'',
     email:null,
 }
+
+export const Info_user=createAsyncThunk("info_user",async (tk)=>{
+  const headers = {
+    Authorization: `Bearer ${tk}`,
+  };
+  const response= await axios.get("http://127.0.0.1:8000/api/profile",{headers});
+  console.log(initialState.tokens)
+  console.log(response.data)
+  return response.data
+})
 
 
 

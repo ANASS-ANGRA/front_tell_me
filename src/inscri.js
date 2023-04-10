@@ -50,14 +50,12 @@ function Inscri() {
       setPasswordError('');
     }
   }
-
   function handleSubmit(event) {
-    event.preventDefault(); // prevent form submission
+    event.preventDefault(); 
     validateName();
     validateUsername();
     validateEmail();
     validatePassword();
-    // Check if there are any errors before submitting the form
     if (!nameError && !usernameError && !emailError && !passwordError) {
         const data ={
           fake_name:name,
@@ -79,7 +77,6 @@ function Inscri() {
         )
     }
   }
-
   return (
     <div id="page_inscri">
       <div className="form-structor">

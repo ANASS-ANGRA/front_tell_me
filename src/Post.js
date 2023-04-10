@@ -2,16 +2,26 @@ import { useEffect, useState } from "react";
 import "./style/post.css"
 import { useDispatch, useSelector } from "react-redux";
 import { fetch_posts } from "./Store/Post_slice";
+import { useNavigate } from "react-router-dom";
+import New_post from "./New_post";
+import { Info_user } from "./Store/login_slice";
 
 
 function Post(){
     const posts=useSelector(state=>state.posts.posts)
     const loading=useSelector(state=>state.posts.loading)
+    const token=useSelector(state=>state.Info.tokens)
     const dispatch=useDispatch()
+    const Nav = useNavigate()
 
     useEffect(()=>{
-      dispatch(fetch_posts())  
-    },[])
+        if (token === null) {
+          Nav('/login');
+        }else{
+          dispatch(fetch_posts())
+          dispatch(Info_user(token))
+        } 
+    },[token])
 
 
     if(loading){
@@ -22,7 +32,6 @@ function Post(){
             
         )
     }
-
 
     return(
         <div id="page_post">
@@ -37,15 +46,7 @@ function Post(){
                     )
                 }
             </div>
-            <div id="new_post">
-                <h2 className="titre_new_post">Titre</h2>
-                <input type="text" id="input_new_post_titre"/>
-                <h2 className="titre_new_post">Post</h2>
-                <input type="text" id="input_new_post_post"/><br></br>
-                <button className="button_home">Post</button>
-
-            </div>
-
+         <New_post/>
         </div>
     )
 }
