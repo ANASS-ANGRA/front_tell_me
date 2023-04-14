@@ -18,6 +18,15 @@ export const Info_user=createAsyncThunk("info_user",async (tk)=>{
     return res.data
 })
 
+export const logaut_user=createAsyncThunk("logaut_user",async (tk)=>{
+  const headers = {
+    Authorization: `Bearer ${tk}`,
+  };
+  const res= await axios.get(`${Api_base}logout`,{headers})
+
+    return res.data
+})
+
  
 
 
@@ -37,7 +46,6 @@ export const Info_slice=createSlice({
       if(tk){
         state.tokens=tk
       }
-      console.log("/login s")
      }
    },
    extraReducers:(builder)=>{
@@ -52,6 +60,17 @@ export const Info_slice=createSlice({
       builder.addCase(Info_user.rejected,(state,action)=>{
           state.erreur=action.payload.message
       });
+      builder.addCase(logaut_user.pending,(state,action)=>{
+        state.loading=true
+    });
+    builder.addCase(logaut_user.fulfilled,(state,action)=>{
+      localStorage.removeItem('token');
+        state.tokens=null
+        state.loading=false
+    });
+    builder.addCase(logaut_user.rejected,(state,action)=>{
+        state.erreur=action.payload.message
+    });
    }
   
 })

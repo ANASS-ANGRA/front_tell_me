@@ -7,16 +7,18 @@ import Inscri from "./inscri";
 import Login from "./login";
 import Validation from "./validation";
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Token_storage } from './Store/login_slice';
 
 function App() {
+  const token=useSelector(state=>state.Info.tokens)
+
  const dispatch= useDispatch()
   useEffect(()=>{
      dispatch(Token_storage())
-     console.log("/app :   dis tok st")
   })
-  const isAuthenticated = localStorage.getItem('token') !== null;
+  const isAuthenticated = token !== null;
+
   return (
     <div className="App">
       <Nav_bar/>

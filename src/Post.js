@@ -39,6 +39,7 @@ function Post(){
                         </div>
                     )
                 }
+                <button onClick={refrech}>refrech</button>
             </div>
          <New_post/>
         </div>
