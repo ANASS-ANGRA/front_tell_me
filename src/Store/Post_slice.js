@@ -1,5 +1,6 @@
 import { createAsyncThunk , createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
+import Api_base from '../api/api';
 
 const initialState = {
     posts:[],
@@ -7,7 +8,8 @@ const initialState = {
     loading:false
 }
 export const fetch_posts=createAsyncThunk("post",async ()=>{
-    const response= await axios.get("http://127.0.0.1:8000/api/tous_post");
+    //const response= await axios.get("http://127.0.0.1:8000/api/tous_post");
+    const response= await axios.get(`${Api_base}tous_post`);
     return response.data
 })
 
@@ -29,8 +31,7 @@ export const Post_slice=createSlice({
         builder.addCase(fetch_posts.rejected,(state,action)=>{
             state.erreur=action.payload.message
         });
-
-        }
+     }
     }
 )
 

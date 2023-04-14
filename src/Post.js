@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetch_posts } from "./Store/Post_slice";
 import { useNavigate } from "react-router-dom";
 import New_post from "./New_post";
-import { Info_user } from "./Store/login_slice";
 
 
 function Post(){
@@ -19,7 +18,6 @@ function Post(){
           Nav('/login');
         }else{
           dispatch(fetch_posts())
-          dispatch(Info_user(token))
         } 
     },[token])
 

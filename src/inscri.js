@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Email_s } from "./Store/login_slice";
+import Api_base from "./api/api";
 
 function Inscri() {
   const [name, setName] = useState('');
@@ -63,7 +64,7 @@ function Inscri() {
           email:email,
           password:password
         }
-        axios.post("http://127.0.0.1:8000/api/register", data).then((Response)=>{
+          axios.post(`${Api_base}register`, data).then((Response)=>{
           console.log(Response)
            if(Response.data.message=="create compte"){
             

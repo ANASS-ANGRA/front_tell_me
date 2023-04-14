@@ -4,6 +4,7 @@ import { Email_s, Token_s } from "./Store/login_slice";
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Api_base from "./api/api";
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -41,7 +42,7 @@ function Login() {
             email:email,
             password:password
          }
-         axios.post("http://127.0.0.1:8000/api/login", data).then((Response)=>{
+          axios.post(`${Api_base}login`, data).then((Response)=>{
           console.log(Response.data)
           if(Response.data.message=="connected"){
              dispatch(Token_s(Response.data.token))

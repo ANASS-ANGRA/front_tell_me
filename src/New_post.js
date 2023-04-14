@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetch_posts } from "./Store/Post_slice";
+import Api_base from './api/api';
 
 function New_post(){
     const [title, setTitle] = useState('');
@@ -27,7 +28,7 @@ function New_post(){
             const headers = {
                 Authorization: `Bearer ${token}`,
               };
-           axios.post("http://127.0.0.1:8000/api/new_post",data,{headers}).then((response)=>{
+            axios.post(`${Api_base}new_post`,data,{headers}).then((response)=>{
               if(response.data.message=="ajouter post"){
                 setDescriptionError("post ajouter")
                 dispatch(fetch_posts()) 

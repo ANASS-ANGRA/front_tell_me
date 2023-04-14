@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState , useEffect} from "react"
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Api_base from "./api/api";
 
 
 
@@ -21,7 +22,7 @@ function Validation(){
 
  function validateCode(){
    if (!code.trim()) {
-    setCode_e('Please enter your name');
+    setCode_e('Please enter your code');
   }else if(code < 6) {
     setCode_e('Password must be at least 8 characters long');
   }else{
@@ -37,7 +38,7 @@ function Validation(){
         email:email,
         code:code
       }
-        axios.post("http://127.0.0.1:8000/api/code_validation",data).then((Response)=>{
+        axios.post(`${Api_base}code_validation`,data).then((Response)=>{
           console.log(Response)
            if(Response.data=="email_verifie"){
              navigate("/login")
