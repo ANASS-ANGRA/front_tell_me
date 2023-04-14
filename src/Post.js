@@ -13,15 +13,10 @@ function Post(){
     const token=useSelector(state=>state.Info.tokens)
     const dispatch=useDispatch()
     const Nav = useNavigate()
-
-    useEffect(()=>{
-        if (token === null) {
-          Nav('/login');
-        }else{
-          dispatch(fetch_posts())
-        } 
-    },[token])
-
+     useEffect(refrech,[])
+     function refrech(){
+        dispatch(fetch_posts())
+     }
 
     if(loading){
         return(

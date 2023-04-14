@@ -37,6 +37,7 @@ export const Info_slice=createSlice({
       if(tk){
         state.tokens=tk
       }
+      console.log("/login s")
      }
    },
    extraReducers:(builder)=>{

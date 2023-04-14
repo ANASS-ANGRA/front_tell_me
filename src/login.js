@@ -47,7 +47,7 @@ function Login() {
           if(Response.data.message=="connected"){
              dispatch(Token_s(Response.data.token))
              localStorage.setItem('token',Response.data.token);
-             Nav("/post")
+             Nav("/")
           }else if(Response.data.message=="vrefie votre email"){
               dispatch(Email_s(email))
               Nav("/validation")

@@ -11,14 +11,9 @@ function Profile(){
     const dispatch=useDispatch()
     const Nav = useNavigate()
 
-
     useEffect(()=>{
-      if(token==null) {
-        Nav('/login');
-        }else{
-         dispatch(Info_user(token))
-       } 
-    },[token])
+        dispatch(Info_user(token))
+    },[])
 
     if(loading){
         return(
