@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom"
 import "./style/Home.css"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { Token_storage} from "./Store/login_slice";
 
 
 
 function Home(){
+  const dispatche=useDispatch()
+   useEffect(()=>{
+      dispatche(Token_storage())
+   },[])
     return(
        <div id="Home">
           <div id="text_home">

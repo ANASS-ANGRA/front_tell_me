@@ -16,9 +16,9 @@ export const Info_user=createAsyncThunk("info_user",async (tk)=>{
   const res= await axios.get(`${Api_base}profile`,{headers})
 
     return res.data
-
-  
 })
+
+ 
 
 
 
@@ -31,6 +31,12 @@ export const Info_slice=createSlice({
      },
      Email_s:(state,action)=>{
       state.email=action.payload
+     },
+     Token_storage:(state,action)=>{
+       const tk = localStorage.getItem("token");
+      if(tk){
+        state.tokens=tk
+      }
      }
    },
    extraReducers:(builder)=>{
@@ -51,4 +57,4 @@ export const Info_slice=createSlice({
 
 export default Info_slice.reducer
 
-export const {Token_s ,Email_s}= Info_slice.actions
+export const {Token_s ,Email_s ,Token_storage}= Info_slice.actions

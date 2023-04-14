@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetch_posts } from "./Store/Post_slice";
 import { useNavigate } from "react-router-dom";
 import New_post from "./New_post";
+import { Token_storage } from "./Store/login_slice";
 
 
 function Post(){
